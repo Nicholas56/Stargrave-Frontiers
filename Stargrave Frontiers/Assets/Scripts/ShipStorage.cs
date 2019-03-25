@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ShipStorage : MonoBehaviour
 {
+    public Profile player;
+
     public GameObject ship;
     public GameObject enemy;
         
@@ -24,8 +26,18 @@ public class ShipStorage : MonoBehaviour
         }
     }
 
-    public void ShipList(GameObject spaceShip)
+    public void ShipList()
     {
-        storedShips.Add(spaceShip);//Adds the described spaceship to the list
+        player = FindObjectOfType<Tester>().player;//Loads the tester as the profile for the player
+        List<Ship> currentShips = player.playerShips;// copies the list of player ships
+        if (currentShips !=null)
+        {
+            for (int i = 0; i < currentShips.Count; i++)
+            {
+                storedShips.Add(ship);//Creates ships in the ship list for the player to control
+                storedShips[i].GetComponent<ShipControl>().status = currentShips[i];//Copies the ship properties onto the created ship
+                storedShips[i].GetComponent<ShipControl>().SetActionPoints();//Copies the action points into the ship control
+            }
+        }
     }
 }

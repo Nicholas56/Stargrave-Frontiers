@@ -57,7 +57,7 @@ public class MapGenerator : MonoBehaviour
 
     void PlaceShips()
     {
-        for (int i = 0; i < 6; i++) { ships.ShipList(ships.ship); }//Creates 6 ships in the ship list for the player to control
+        ships.ShipList();//Runs the function that populates the store ships list
         for (int i = 0; i < ships.storedShips.Count; i++)
         { 
             int rand1 = Random.Range(0, startArea.x);//Chooses a random x node, inside of the start area

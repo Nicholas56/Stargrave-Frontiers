@@ -24,4 +24,5 @@ public class Node
         gridX = a_gridX; //X Position in the Node Array
         gridY = a_gridY; //Y Position in the Node Array
     }
+    
 }

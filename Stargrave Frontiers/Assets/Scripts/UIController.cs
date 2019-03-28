@@ -14,7 +14,6 @@ public class UIController : MonoBehaviour
     public Image actionBar;
 
     MoveSelectShip selector;
-    public Ship player;
 
 	// Use this for initialization
 	void Start ()
@@ -31,7 +30,7 @@ public class UIController : MonoBehaviour
         if (selector.currentShip)
         {
             actionBar.fillAmount = selector.currentShip.GetComponent<ShipControl>().actionPoints / 1000;
-            selectedShipName.text = player.shipName;
+            //selectedShipName.text = selector.currentShip.GetComponent<ShipControl>().GetShipName();//MAYBE GET RID OF THIS!
         }
 	}
 

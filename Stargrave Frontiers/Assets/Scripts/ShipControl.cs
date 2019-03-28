@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipControl : MonoBehaviour
 {
@@ -26,7 +27,9 @@ public class ShipControl : MonoBehaviour
         user = FindObjectOfType<UIController>();
         pathToTake = new List<Node>();
         canMove = true;
-        
+
+        actionPoints = 0;
+        status = null;
     }
 	
 	// Update is called once per frame
@@ -69,12 +72,24 @@ public class ShipControl : MonoBehaviour
 
         isShipSelected = true; //Changes the selected status of this ship to true
         selector.currentShip = gameObject;
-        user.player = status;
+        //user.selectedShipName.text = status.shipName;
+        //user.player = status;
         Debug.Log("Ship Clicked");
+        Debug.Log(status);
+        Debug.Log(actionPoints);
     }
 
     public void SetActionPoints()
     {
         actionPoints = status.actionPoints;//Copies the action points into the ship control
+    }
+
+    public string GetShipName()
+    {
+        if (status != null)
+        {
+            return status.shipName;
+        }
+        else { return ""; }
     }
 }

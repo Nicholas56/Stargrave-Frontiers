@@ -35,8 +35,8 @@ public class ShipStorage : MonoBehaviour
             for (int i = 0; i < currentShips.Count; i++)
             {
                 storedShips.Add(ship);//Creates ships in the ship list for the player to control
-                storedShips[i].GetComponent<ShipControl>().status = currentShips[i];//Copies the ship properties onto the created ship
-                storedShips[i].GetComponent<ShipControl>().SetActionPoints();//Copies the action points into the ship control
+                //storedShips[i].GetComponent<ShipControl>().status = currentShips[i];//Copies the ship properties onto the created ship
+                //storedShips[i].GetComponent<ShipControl>().SetActionPoints();//Copies the action points into the ship control
             }
         }
     }

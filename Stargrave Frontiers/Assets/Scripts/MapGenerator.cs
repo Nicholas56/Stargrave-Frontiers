@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    Profile player;
+
     public Vector2Int startArea;
     public int obstacleNumber;
     public ShipStorage ships;
@@ -19,6 +21,7 @@ public class MapGenerator : MonoBehaviour
     {
         grid = GetComponent<Grid>();
         ships = FindObjectOfType<ShipStorage>();
+        player = FindObjectOfType<Tester>().player;
         Invoke("PlaceObstacles", 1);
     }
 
@@ -71,6 +74,11 @@ public class MapGenerator : MonoBehaviour
                 Instantiate(ships.storedShips[i], pos1, Quaternion.identity);//Creates the ship at the node position                
             }
             else { i--; }//If position is occupied, loops one extra time
+        }
+        ShipControl[] placedShips = FindObjectsOfType<ShipControl>();
+        for(int j = 0; j < placedShips.Length;j++)
+        {
+            placedShips[j].status = player.playerShips[j];//Finds every ship placed and gives it the profile identities
         }
     }
 

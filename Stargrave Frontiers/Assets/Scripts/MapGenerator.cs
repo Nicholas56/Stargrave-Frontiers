@@ -21,7 +21,6 @@ public class MapGenerator : MonoBehaviour
     {
         grid = GetComponent<Grid>();
         ships = FindObjectOfType<ShipStorage>();
-        player = FindObjectOfType<Tester>().player;
         Invoke("PlaceObstacles", 1);
     }
 
@@ -49,7 +48,11 @@ public class MapGenerator : MonoBehaviour
                 }
                 else
                 {
-                    Instantiate(ships.enemyShips[i], pos2, Quaternion.identity);//Loads the enemy ships onto the map
+                    GameObject newObject = Instantiate(ships.enemyShips[i], pos2, Quaternion.identity);//Loads the enemy ships onto the map
+                    if (newObject.GetComponent<EnemyAI>())
+                    {
+                        newObject.GetComponent<EnemyAI>().shipId = i;//Sets the id of the enemy ship, in the order generated
+                    }
                 }
             }
             else { i--; }//If position is occupied, loops one extra time
@@ -60,26 +63,30 @@ public class MapGenerator : MonoBehaviour
 
     void PlaceShips()
     {
+        player = FindObjectOfType<Tester>().player;
         ships.ShipList();//Runs the function that populates the store ships list
         for (int i = 0; i < ships.storedShips.Count; i++)
         { 
             int rand1 = Random.Range(0, startArea.x);//Chooses a random x node, inside of the start area
             int rand2 = Random.Range(0, startArea.y);//Chooses a random y node, inside of the start area
 
-            Vector2 pos1 = grid.grid[rand1, rand2].Position;// Gets the position of the chosen(random) node
+            Vector2 pos3 = grid.grid[rand1, rand2].Position;// Gets the position of the chosen(random) node
 
-            if (!obstaclePositions.Contains(pos1))//Checks that there not already an obstacle at that node
+            if (!obstaclePositions.Contains(pos3))//Checks that there not already an obstacle at that node
             {
-                obstaclePositions.Add(pos1);//Marks down the position where an obstacle exists
-                Instantiate(ships.storedShips[i], pos1, Quaternion.identity);//Creates the ship at the node position                
+                obstaclePositions.Add(pos3);//Marks down the position where an obstacle exists
+                GameObject newObject = Instantiate(ships.storedShips[i], pos3, Quaternion.identity);//Creates the ship at the node position  
+                if (newObject.GetComponent<ShipControl>())
+                {
+                    newObject.GetComponent<ShipControl>().shipId = i;
+                    newObject.GetComponent<ShipControl>().shipName = player.playerShips[i].shipName;
+                    newObject.GetComponent<ShipControl>().actionPoints = player.playerShips[i].actionPoints;//Sets the ship id, name and action points for each ship
+                }
+                Debug.Log(pos3);
             }
             else { i--; }//If position is occupied, loops one extra time
         }
-        ShipControl[] placedShips = FindObjectsOfType<ShipControl>();
-        for(int j = 0; j < placedShips.Length;j++)
-        {
-            placedShips[j].status = player.playerShips[j];//Finds every ship placed and gives it the profile identities
-        }
+        
     }
 
     

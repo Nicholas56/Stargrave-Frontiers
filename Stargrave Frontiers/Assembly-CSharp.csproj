@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Cursor.cs" />
+    <Compile Include="Assets\Scripts\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\EnemyAIController.cs" />
     <Compile Include="Assets\Scripts\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Movement\Grid.cs" />
     <Compile Include="Assets\Scripts\Movement\Node.cs" />

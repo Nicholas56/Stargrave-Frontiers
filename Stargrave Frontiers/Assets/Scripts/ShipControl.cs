@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class ShipControl : MonoBehaviour
 {
-    public Ship status;
-
     public bool isShipSelected;
     public bool isShipMoving;
+
+    public int shipId;
     public int actionPoints;
+    public string shipName;
 
     public bool canMove;
     public float speed;
@@ -28,14 +29,12 @@ public class ShipControl : MonoBehaviour
         pathToTake = new List<Node>();
         canMove = true;
 
-        actionPoints = 0;
-        status = null;
+        actionPoints = 310;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        //Debug.Log(status.shipName);
         if (pathToTake.Count != 0 && actionPoints>0 && canMove)
         {
             isShipMoving = true;
@@ -45,8 +44,8 @@ public class ShipControl : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, pathToTake[0].Position, step);//The ship moves towards the location of the tile in the path
             if (Vector2.Distance(transform.position, pathToTake[0].Position) < waypointProximity)//When the ship is close enough to the tile, the waypoint is changed
             {
-                previousPosition = pathToTake[0].Position;
-                pathToTake.RemoveAt(0);
+                previousPosition = pathToTake[0].Position;//stores the current position as the previous one
+                pathToTake.RemoveAt(0);//Changes the target node, by removing the current one
             }
             actionPoints -= 1;
         }
@@ -72,24 +71,7 @@ public class ShipControl : MonoBehaviour
 
         isShipSelected = true; //Changes the selected status of this ship to true
         selector.currentShip = gameObject;
-        //user.selectedShipName.text = status.shipName;
-        //user.player = status;
+        user.selectedShipName.text = shipName;
         Debug.Log("Ship Clicked");
-        Debug.Log(status);
-        Debug.Log(actionPoints);
-    }
-
-    public void SetActionPoints()
-    {
-        actionPoints = status.actionPoints;//Copies the action points into the ship control
-    }
-
-    public string GetShipName()
-    {
-        if (status != null)
-        {
-            return status.shipName;
-        }
-        else { return ""; }
     }
 }

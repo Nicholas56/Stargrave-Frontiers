@@ -8,7 +8,7 @@ public class Ship
 
     public int actionPoints;
 
-    public Vector2 shipPosition;
+    //public Vector2 shipPosition;
 
 
 

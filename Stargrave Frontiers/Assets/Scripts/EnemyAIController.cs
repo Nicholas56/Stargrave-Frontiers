@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class EnemyAIController : MonoBehaviour
 {
-    //GameObject currentEnemy;
+    GameObject currentEnemy;
     Grid grid;
     Pathfinding paths;
     public GameObject targetPoint;
+
+    GameObject[] enemies;
     bool moveLeft;
+    int enemyTurn;
 
     MoveSelectShip gameTurn;
 
@@ -16,50 +19,91 @@ public class EnemyAIController : MonoBehaviour
 	void Start ()
     {
         gameTurn = GetComponent<MoveSelectShip>();
-        //currentEnemy = null;
+        currentEnemy = null;
         grid = GetComponent<Grid>();
         paths = GetComponent<Pathfinding>();
         moveLeft = true;
+        enemyTurn = 0;
     }
-	
-    public void EnemyTurn()
-    {
-        GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
-        for (int i = 0; i < ships.Length; i++)
-        {
-            ships[i].GetComponent<ShipControl>().isShipSelected = false;//Changes the selected status of all ship to false
-        }
 
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");//Finds all the enemy vessels
-        for (int i = 0; i < enemies.Length; i++)
+    private void Update()
+    {
+        if(GameObject.FindGameObjectWithTag("Enemy") && gameTurn.isTurn == false && enemyTurn<50)
         {
             grid.CreateGrid();//Sets the walls in the grid
-            paths.StartPosition = enemies[i].transform;//Sets the start point of the path as the current ship in the list
-            if (enemies[i].transform.position.x > grid.grid[1, 0].Position.x && moveLeft)
+            if (enemyTurn == 0)
+            {
+                GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
+                for (int i = 0; i < ships.Length; i++)
+                {
+                    ships[i].GetComponent<ShipControl>().isShipSelected = false;//Changes the selected status of all ship to false
+                }
+                enemies = GameObject.FindGameObjectsWithTag("Enemy");//Finds all the enemy vessels
+            }
+            EnemyTurns(enemyTurn);
+        }
+    }
+    
+    public void EnemyTurns(int enemy)
+    {
+        Debug.Log(enemy);
+        if (enemy < enemies.Length)
+        {
+            GameObject ship = enemies[enemy];
+
+            enemyTurn = (enemyTurn + 1) * 100;
+
+            paths.StartPosition = ship.transform;//Sets the start point of the path as the current ship in the list
+            if (ship.transform.position.x > grid.grid[1, 0].Position.x && moveLeft)
             {
                 int randY = Random.Range(0, grid.grid.GetLength(1));//Chooses a random y node,
                 GameObject newObject = Instantiate(targetPoint, grid.grid[0, randY].Position, Quaternion.identity);//Creates a target at a random node on the left of the map
                 paths.TargetPosition = newObject.transform;
-                Destroy(newObject);//Destroys the created target
-                int count = 0;
-            label:
-                if (grid.FinalPath != null)
-                {
-                    if (enemies[i].GetComponent<EnemyAI>())
-                    {
-                        enemies[i].GetComponent<EnemyAI>().pathToTake = grid.FinalPath;//Sets the path of the enemy
-                        grid.FinalPath = null;//Resets the final path in Grid
-                    }
-                }
-                else
-                {
-                    count++;
-                    if (count > 15) { goto label2; }//Ensures that the path is set,by looping until the path is not null
-                    goto label;
-                }
-            label2:;
+                Destroy(newObject, 1);//Destroys the created target
+            }
+            else
+            {
+                moveLeft = false;
+                int randY = Random.Range(0, grid.grid.GetLength(1));//Chooses a random y node,
+                GameObject newObject = Instantiate(targetPoint, grid.grid[grid.grid.GetLength(0), randY].Position, Quaternion.identity);//Creates a target at a random node on the left of the map
+                paths.TargetPosition = newObject.transform;
+                Destroy(newObject, 1);//Destroys the created target
+            }
+            currentEnemy = ship;
+        }
+        Invoke("LoadPath", 2);//Waits half a second to load the path
+    }
+
+    void LoadPath()
+    {
+        if (grid.FinalPath != null)//Checks that there is a path
+        {
+            if (currentEnemy.GetComponent<EnemyAI>())
+            {
+                currentEnemy.GetComponent<EnemyAI>().isShipSelected = true;
+                currentEnemy.GetComponent<EnemyAI>().pathToTake = grid.FinalPath;//Sets the path of the enemy
+                grid.FinalPath = null;//Resets the final path in Grid
             }
         }
-        gameTurn.isTurn = true;
+        enemyTurn = enemyTurn / 100;
+        if (currentEnemy.transform.position.x < grid.grid[grid.grid.GetLength(0)-1, 0].Position.x){ moveLeft = true; }//If the ship is close to the right edge, direction changes
+        Debug.Log(enemyTurn);
+        if (enemyTurn == enemies.Length)
+        {
+            Invoke("EndEnemyTurn", 1);
+        }
+    }
+
+    void EndEnemyTurn()
+    {
+        gameTurn.isTurn = true;//It becomes the players turn again
+        foreach (GameObject ship in enemies)
+        {
+            if (ship.GetComponent<EnemyAI>())
+            {
+                ship.GetComponent<EnemyAI>().isShipSelected = false;//Changes the selected status of all ship to false
+            }
+        }
+        enemyTurn = 0;//Resets the enemy turn counter
     }
 }

@@ -7,8 +7,11 @@ public class Profile
 
     public List<Ship> playerShips;
 
+    public List<Enemy> enemyTypes;
+
 	public Profile()
     {
         playerShips = new List<Ship>();
+        enemyTypes = new List<Enemy>();
     }
 }

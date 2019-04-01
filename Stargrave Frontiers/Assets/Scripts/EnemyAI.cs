@@ -38,9 +38,8 @@ public class EnemyAI : MonoBehaviour
 
             if (pathToTake.Count != 0 && actionPoints > 0)
             {
-                Debug.Log("hello");
                 isShipMoving = true;
-                float step = speed * Time.deltaTime;
+                float step = speed * Time.deltaTime;//Sets the speed that the ship moves at
 
                 // move sprite towards the target location
                 transform.position = Vector2.MoveTowards(transform.position, pathToTake[0].Position, step);//The ship moves towards the location of the tile in the path
@@ -56,11 +55,11 @@ public class EnemyAI : MonoBehaviour
                 isShipMoving = false;
             }
 
-            if (actionPoints == 0) { transform.position = previousPosition; }//If the ship is out of action points, the ship returns to the previous node
-
             if (isShipSelected) { gameObject.layer = 0; } 
         }
         else { gameObject.layer = 8; }//If the ship is selected, it is no longer counted as a wall
+
+        if (actionPoints == 0) { transform.position = previousPosition; }//If the ship is out of action points, the ship returns to the previous node
     }
 
     public void SeekPlayer()

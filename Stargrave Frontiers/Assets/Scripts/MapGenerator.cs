@@ -26,6 +26,8 @@ public class MapGenerator : MonoBehaviour
 
     void PlaceObstacles()
     {
+        player = FindObjectOfType<Tester>().player;//Loads in the tester scenario
+
         gX = grid.grid.GetLength(0);//Gets number of nodes along the x axis
         gY = grid.grid.GetLength(1);// Gets number of nodes along the y axis
         obstaclePositions = new List<Vector2>();//Makes a new list of the obstacle positions
@@ -52,6 +54,8 @@ public class MapGenerator : MonoBehaviour
                     if (newObject.GetComponent<EnemyAI>())
                     {
                         newObject.GetComponent<EnemyAI>().shipId = i;//Sets the id of the enemy ship, in the order generated
+                        newObject.GetComponent<EnemyAI>().shipName = player.enemyTypes[0].typeName;
+                        newObject.GetComponent<EnemyAI>().actionPoints = player.enemyTypes[0].actionPoints;//Sets up the enemy ships according to the profile. NEEDS a variable to differentiate between types
                     }
                 }
             }
@@ -63,7 +67,6 @@ public class MapGenerator : MonoBehaviour
 
     void PlaceShips()
     {
-        player = FindObjectOfType<Tester>().player;
         ships.ShipList();//Runs the function that populates the store ships list
         for (int i = 0; i < ships.storedShips.Count; i++)
         { 
@@ -82,7 +85,6 @@ public class MapGenerator : MonoBehaviour
                     newObject.GetComponent<ShipControl>().shipName = player.playerShips[i].shipName;
                     newObject.GetComponent<ShipControl>().actionPoints = player.playerShips[i].actionPoints;//Sets the ship id, name and action points for each ship
                 }
-                Debug.Log(pos3);
             }
             else { i--; }//If position is occupied, loops one extra time
         }

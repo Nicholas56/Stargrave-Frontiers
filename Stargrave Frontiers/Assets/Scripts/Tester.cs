@@ -16,5 +16,6 @@ public class Tester : MonoBehaviour
         player.playerShips.Add(new Ship("Monster", 310));
         player.playerShips.Add(new Ship("Enterprise", 310));
         player.playerShips.Add(new Ship("Apollo", 310));
+        player.enemyTypes.Add(new Enemy("Frigate", 310));
 	}	
 }

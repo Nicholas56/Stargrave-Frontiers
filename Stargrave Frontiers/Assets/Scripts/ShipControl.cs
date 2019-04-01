@@ -20,6 +20,8 @@ public class ShipControl : MonoBehaviour
     UIController user;
     public List<Node> pathToTake;
     Vector2 previousPosition;
+
+    public bool selectedMouse;
     
     // Use this for initialization
     void Start ()
@@ -61,17 +63,27 @@ public class ShipControl : MonoBehaviour
 
     private void OnMouseDown()
     {
-        
-        GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
-        for (int i = 0; i < ships.Length; i++)
+        if (!selector.isOverUI)
         {
-            if(ships[i].GetComponent<ShipControl>().isShipMoving == true) { return; }
-            ships[i].GetComponent<ShipControl>().isShipSelected = false;//Changes the selected status of all ship to false
-        } 
+            selectedMouse = true;
+            GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
+            for (int i = 0; i < ships.Length; i++)
+            {
+                if (ships[i].GetComponent<ShipControl>().isShipMoving == true) { return; }
+                ships[i].GetComponent<ShipControl>().isShipSelected = false;//Changes the selected status of all ship to false
+            }
 
-        isShipSelected = true; //Changes the selected status of this ship to true
-        selector.currentShip = gameObject;
-        user.selectedShipName.text = shipName;
-        Debug.Log("Ship Clicked");
+            isShipSelected = true; //Changes the selected status of this ship to true
+            selector.currentShip = gameObject;
+            user.selectedShipName.text = shipName;
+            user.actNum = (0);//The number resets
+            user.ResetText();
+            Debug.Log("Ship Clicked");
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        selectedMouse = false;
     }
 }

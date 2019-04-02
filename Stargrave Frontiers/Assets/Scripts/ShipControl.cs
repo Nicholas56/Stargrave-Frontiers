@@ -16,6 +16,11 @@ public class ShipControl : MonoBehaviour
     public float speed;
     public float waypointProximity;
 
+    public GameObject shot;
+    public float accuracy;//subtracted from 10
+    public float shotSpeed;
+    public float shotRange;
+
     MoveSelectShip selector;
     UIController user;
     public List<Node> pathToTake;
@@ -76,7 +81,7 @@ public class ShipControl : MonoBehaviour
             isShipSelected = true; //Changes the selected status of this ship to true
             selector.currentShip = gameObject;
             user.selectedShipName.text = shipName;
-            user.actNum = (0);//The number resets
+            user.actNum = (0);//Resets the UI to give the default settings
             user.ResetText();
             Debug.Log("Ship Clicked");
         }
@@ -85,5 +90,22 @@ public class ShipControl : MonoBehaviour
     private void OnMouseExit()
     {
         selectedMouse = false;
+    }
+
+    public void FireWeapon(Vector2 direction)
+    {
+        float accNum = 10 - accuracy;
+        float accX = Random.Range(0-accNum, accNum);
+        float accY = Random.Range(0 - accNum, accNum);//Forms an "innaccuracy" vector to affect shots
+
+        Vector2 accVect = ((Vector2)transform.position + new Vector2(accX, accY)); //Accuracy is affected and changes the vector
+        Vector2 dir = (direction - accVect).normalized;//Returned the direction of the shot, normalized to a magnitude of 1.
+        GameObject newObject = Instantiate(shot, transform.position, Quaternion.identity);
+        if (!newObject.GetComponent<ShotScript>()) { newObject.AddComponent<ShotScript>(); }//If the prefab doesn't have the correct script, add it
+
+        newObject.GetComponent<ShotScript>().direction = dir;
+        newObject.GetComponent<ShotScript>().start = transform.position;
+        newObject.GetComponent<ShotScript>().speed = shotSpeed;
+        newObject.GetComponent<ShotScript>().distance = shotRange;//Sets the properties of the shot, according to the ship firing
     }
 }

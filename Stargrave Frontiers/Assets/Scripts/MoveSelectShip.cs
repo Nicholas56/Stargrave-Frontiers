@@ -33,11 +33,15 @@ public class MoveSelectShip : MonoBehaviour {
             {
                 grid.CreateGrid();
                 if (user.actNum == 0)
-                    {
-                        paths.StartPosition = currentShip.transform; //Loads the selected ships position as the start position for the pathfinder
-                        Instantiate(targetPoint, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity); //Creates a game object at the position of the mouse click
-                        paths.TargetPosition = GameObject.FindGameObjectWithTag("Target").transform; //Loads the created game object as the target position for the pathfinder
-                    }
+                {
+                    paths.StartPosition = currentShip.transform; //Loads the selected ships position as the start position for the pathfinder
+                    Instantiate(targetPoint, Camera.main.ScreenToWorldPoint(Input.mousePosition), Quaternion.identity); //Creates a game object at the position of the mouse click
+                    paths.TargetPosition = GameObject.FindGameObjectWithTag("Target").transform; //Loads the created game object as the target position for the pathfinder
+                }
+                else if (user.actNum == 1)
+                {
+                    currentShip.GetComponent<ShipControl>().FireWeapon(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+                }
 
 
             }

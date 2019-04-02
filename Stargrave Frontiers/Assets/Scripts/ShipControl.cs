@@ -3,23 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShipControl : MonoBehaviour
+public class ShipControl : Ship
 {
     public bool isShipSelected;
     public bool isShipMoving;
 
     public int shipId;
-    public int actionPoints;
-    public string shipName;
 
     public bool canMove;
     public float speed;
-    public float waypointProximity;
-
-    public GameObject shot;
-    public float accuracy;//subtracted from 10
-    public float shotSpeed;
-    public float shotRange;
+    public float waypointProximity;    
 
     MoveSelectShip selector;
     UIController user;
@@ -27,6 +20,9 @@ public class ShipControl : MonoBehaviour
     Vector2 previousPosition;
 
     public bool selectedMouse;
+
+
+
     
     // Use this for initialization
     void Start ()

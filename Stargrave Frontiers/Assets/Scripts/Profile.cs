@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Profile
 {
-
+    public List<Weapon> weaponList;
     public List<Ship> playerShips;
 
     public List<Enemy> enemyTypes;

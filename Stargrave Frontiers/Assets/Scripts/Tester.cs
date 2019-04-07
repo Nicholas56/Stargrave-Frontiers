@@ -10,12 +10,14 @@ public class Tester : MonoBehaviour
 	void Start ()
     {
         player = new Profile();
-        player.playerShips.Add(new Ship("Excelsior", 310));
-        player.playerShips.Add(new Ship("Destroyer", 310));
-        player.playerShips.Add(new Ship("Gladius", 310));
-        player.playerShips.Add(new Ship("Monster", 310));
-        player.playerShips.Add(new Ship("Enterprise", 310));
-        player.playerShips.Add(new Ship("Apollo", 310));
-        player.enemyTypes.Add(new Enemy("Frigate", 310));
+        player.weaponList.Add(new Weapon("Pulse Cannon", 31, 15f, 6f));
+
+        player.playerShips.Add(new Ship("Excelsior", 310, player.weaponList[0]));
+        player.playerShips.Add(new Ship("Destroyer", 310, player.weaponList[0]));
+        player.playerShips.Add(new Ship("Gladius", 310, player.weaponList[0]));
+        player.playerShips.Add(new Ship("Monster", 310, player.weaponList[0]));
+        player.playerShips.Add(new Ship("Enterprise", 310, player.weaponList[0]));
+        player.playerShips.Add(new Ship("Apollo", 310, player.weaponList[0]));
+        player.enemyTypes.Add(new Enemy("Frigate", 310, 6.5f, 10f));                
 	}	
 }

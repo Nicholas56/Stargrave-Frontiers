@@ -23,7 +23,7 @@ public class ShotScript : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        rigid.AddForce(direction*speed, ForceMode2D.Impulse);//Adds force to the projectile in the direction given
+        rigid.AddForce(direction*speed, ForceMode2D.Force);//Adds force to the projectile in the direction given
 
         travel = Vector2.Distance(start, transform.position);//Calculates how far the projectile has travelled
         if(travel >=distance)

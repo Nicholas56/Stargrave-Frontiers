@@ -55,6 +55,8 @@ public class MapGenerator : MonoBehaviour
                     {
                         newObject.GetComponent<EnemyAI>().shipId = i;//Sets the id of the enemy ship, in the order generated
                         newObject.GetComponent<EnemyAI>().shipName = player.enemyTypes[0].typeName;
+                        newObject.GetComponent<EnemyAI>().shotAcc = player.enemyTypes[0].accuracy;
+                        newObject.GetComponent<EnemyAI>().shotRange = player.enemyTypes[0].range;
                         newObject.GetComponent<EnemyAI>().actionPoints = player.enemyTypes[0].actionPoints;//Sets up the enemy ships according to the profile. NEEDS a variable to differentiate between types
                     }
                 }
@@ -84,6 +86,7 @@ public class MapGenerator : MonoBehaviour
                     newObject.GetComponent<ShipControl>().shipId = i;
                     newObject.GetComponent<ShipControl>().shipName = player.playerShips[i].shipName;
                     newObject.GetComponent<ShipControl>().actionPoints = player.playerShips[i].actionPoints;//Sets the ship id, name and action points for each ship
+                    newObject.GetComponent<ShipControl>().weapon = player.playerShips[i].weapon;
                 }
             }
             else { i--; }//If position is occupied, loops one extra time

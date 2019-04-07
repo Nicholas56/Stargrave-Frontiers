@@ -99,14 +99,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf6ef1d58b5f6224aa340c28dbb24b83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shipName: 
+  actionPoints: 310
+  shot: {fileID: 1610601815590664, guid: d5264efada392404a9359b68c734da83, type: 2}
+  shotSpeed: 5
   isShipSelected: 0
   isShipMoving: 0
   shipId: 0
-  actionPoints: 310
-  shipName: 
   canMove: 0
   speed: 2
   waypointProximity: 0.001
+  selectedMouse: 0
 --- !u!212 &212400395522699350
 SpriteRenderer:
   m_ObjectHideFlags: 1

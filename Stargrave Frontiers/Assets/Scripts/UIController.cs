@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Text selectedShipName;
+    public Text outOfActionPoints;
 
     public Button actionButton;
     public Button endTurnButton;
@@ -23,6 +24,8 @@ public class UIController : MonoBehaviour
         actions = new List<string>();
         actions.Add("Move");
         actions.Add("Fire");
+
+        outOfActionPoints.gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -59,6 +62,11 @@ public class UIController : MonoBehaviour
     {
         selector.isTurn = false;
         selector.currentShip = null;
+        GameObject[] ships = GameObject.FindGameObjectsWithTag("Enemy");
+        for (int i = 0; i < ships.Length; i++)
+        {
+            ships[i].GetComponent<EnemyAI>().actionPoints = 310;//resets the enemy action points to full
+        }
     }
 
     public void ResetText()
@@ -66,4 +74,14 @@ public class UIController : MonoBehaviour
         actionButton.GetComponentInChildren<Text>().text = actions[actNum];//Changes the button name
     }
 
+    public void FlashNotification()
+    {
+        outOfActionPoints.gameObject.SetActive(true);//Make the notification visible
+        Invoke("RemoveNotification", 0.5f);
+    }
+
+    public void RemoveNotification()
+    {
+        outOfActionPoints.gameObject.SetActive(false);//Make the notification invisible
+    }
 }

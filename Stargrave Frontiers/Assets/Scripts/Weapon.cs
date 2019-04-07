@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour {
+public class Weapon
+{
+    public string weaponName;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public int actionCost;
+    public float shotRange;
+    public float accuracy;//subtracted from 10
+      
+    public Weapon(string name, int aCost, float range,float acc)
+    {
+        weaponName = name;
+        actionCost = aCost;
+        shotRange = range;
+        accuracy = acc;
+    }
 }

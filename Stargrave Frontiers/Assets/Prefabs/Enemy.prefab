@@ -104,6 +104,10 @@ MonoBehaviour:
   shipId: 0
   actionPoints: 0
   shipName: 
+  enemyShot: {fileID: 1234760334042514, guid: 1d3ba8b710c53df4ab7a74ce0a338fb7, type: 2}
+  shotSpeed: 5
+  shotAcc: 0
+  shotRange: 0
   speed: 2
   waypointProximity: 0.001
   searchRadius: 6

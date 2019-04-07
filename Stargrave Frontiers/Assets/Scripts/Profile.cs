@@ -12,6 +12,8 @@ public class Profile
 	public Profile()
     {
         playerShips = new List<Ship>();
+        weaponList = new List<Weapon>();
+
         enemyTypes = new List<Enemy>();
     }
 }

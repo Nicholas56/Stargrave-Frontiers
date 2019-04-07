@@ -8,10 +8,11 @@ public class Ship : MonoBehaviour
 
     public int actionPoints;
 
-    public GameObject shot;
-    public float accuracy;//subtracted from 10
+    public Weapon weapon;
+
+    public GameObject shot;    
     public float shotSpeed;
-    public float shotRange;
+
     //public Vector2 shipPosition;
 
 
@@ -20,9 +21,10 @@ public class Ship : MonoBehaviour
 
     }
 
-    public Ship(string name, int points)
+    public Ship(string name, int points, Weapon shipWeapon)
     {
         shipName = name;
         actionPoints = points;
+        weapon = shipWeapon;
     }
 }

@@ -97,6 +97,12 @@ public class EnemyAIController : MonoBehaviour
     void EndEnemyTurn()
     {
         gameTurn.isTurn = true;//It becomes the players turn again
+        GameObject[] ships = GameObject.FindGameObjectsWithTag("Ship");
+        for (int i = 0; i < ships.Length; i++)
+        {
+            ships[i].GetComponent<ShipControl>().actionPoints = 310;//Sets all the player ships to full action points
+            //ships[i].GetComponent<ShipControl>().pathToTake.RemoveRange(1, ships[i].GetComponent<ShipControl>().pathToTake.Count-1);//resets ship paths  ISSUE need to reset path each turn
+        }
         foreach (GameObject ship in enemies)
         {
             if (ship.GetComponent<EnemyAI>())

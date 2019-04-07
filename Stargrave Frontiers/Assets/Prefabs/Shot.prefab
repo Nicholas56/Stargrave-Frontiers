@@ -89,6 +89,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13f17db1272f80d40908d0da18cc3c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
+  direction: {x: 0, y: 0}
+  start: {x: 0, y: 0}
+  distance: 0
+  explosion: {fileID: 1941420239987376, guid: a8ab5eb044ea88c4b88db3e3b8ee2a63, type: 2}
 --- !u!212 &212994946119327108
 SpriteRenderer:
   m_ObjectHideFlags: 1

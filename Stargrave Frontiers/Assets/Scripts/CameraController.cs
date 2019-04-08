@@ -7,8 +7,13 @@ public class CameraController : MonoBehaviour
 
     public Vector2 panLimit;
 
-	// Update is called once per frame
-	void Update ()
+    private void Start()
+    {
+        transform.position = new Vector3(-10, -10, -10);
+    }
+
+    // Update is called once per frame
+    void Update ()
     {
         Vector3 pos = transform.position;
         if (Input.GetKey("w")|| Input.mousePosition.y >= Screen.height - panBorderThickness)

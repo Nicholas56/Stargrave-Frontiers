@@ -54,18 +54,17 @@ public class EnemyAIController : MonoBehaviour
             enemyTurn = (enemyTurn + 1) * 100;
 
             paths.StartPosition = ship.transform;//Sets the start point of the path as the current ship in the list
-            if (ship.transform.position.x > grid.grid[1, 0].Position.x && moveLeft)
+            if (moveLeft && !GameObject.FindGameObjectWithTag("Target"))
             {
                 int randY = Random.Range(0, grid.grid.GetLength(1));//Chooses a random y node,
                 GameObject newObject = Instantiate(targetPoint, grid.grid[0, randY].Position, Quaternion.identity);//Creates a target at a random node on the left of the map
                 paths.TargetPosition = newObject.transform;
                 Destroy(newObject, 1);//Destroys the created target
             }
-            else
+            else if(!GameObject.FindGameObjectWithTag("Target"))
             {
-                moveLeft = false;
                 int randY = Random.Range(0, grid.grid.GetLength(1));//Chooses a random y node,
-                GameObject newObject = Instantiate(targetPoint, grid.grid[grid.grid.GetLength(0), randY].Position, Quaternion.identity);//Creates a target at a random node on the left of the map
+                GameObject newObject = Instantiate(targetPoint, grid.grid[grid.grid.GetLength(0)-1, randY].Position, Quaternion.identity);//Creates a target at a random node on the left of the map
                 paths.TargetPosition = newObject.transform;
                 Destroy(newObject, 1);//Destroys the created target
             }
@@ -86,8 +85,9 @@ public class EnemyAIController : MonoBehaviour
             }
         }
         enemyTurn = enemyTurn / 100;
-        if (currentEnemy.transform.position.x < grid.grid[grid.grid.GetLength(0)-1, 0].Position.x){ moveLeft = true; }//If the ship is close to the right edge, direction changes
-        Debug.Log(enemyTurn);
+        if (currentEnemy.transform.position.x > grid.grid[grid.grid.GetLength(0)-2, 0].Position.x){ moveLeft = true; }//If the ship is close to the right edge, direction changes
+        if (currentEnemy.transform.position.x < grid.grid[1, 0].Position.x){ moveLeft = false; }//If the ship is close to the left edge, direction changes
+        Debug.Log(moveLeft);
         if (enemyTurn == enemies.Length)
         {
             Invoke("EndEnemyTurn", 1);

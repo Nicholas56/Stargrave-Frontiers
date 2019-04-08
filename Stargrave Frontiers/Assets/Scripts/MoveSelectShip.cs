@@ -46,7 +46,7 @@ public class MoveSelectShip : MonoBehaviour {
 
             }
 
-            if (grid.FinalPath != null)
+            if (grid.FinalPath != null && currentShip !=null)
             {
                 currentShip.GetComponent<ShipControl>().pathToTake = grid.FinalPath;//Loads the path from the pathfinder into the ship control
 

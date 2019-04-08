@@ -87,6 +87,7 @@ public class MapGenerator : MonoBehaviour
                     newObject.GetComponent<ShipControl>().shipName = player.playerShips[i].shipName;
                     newObject.GetComponent<ShipControl>().actionPoints = player.playerShips[i].actionPoints;//Sets the ship id, name and action points for each ship
                     newObject.GetComponent<ShipControl>().weapon = player.playerShips[i].weapon;
+                    newObject.GetComponent<ShipControl>().parts = player.playerShips[i].parts;
                 }
             }
             else { i--; }//If position is occupied, loops one extra time

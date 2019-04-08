@@ -14,6 +14,8 @@ public class EnemyAI : MonoBehaviour
     public float shotSpeed = 5;
     public float shotAcc;
     public float shotRange;
+    float shotTimer;
+    bool canShoot;
 
     public float speed = 2;
     public float waypointProximity = 0.001f;
@@ -26,7 +28,7 @@ public class EnemyAI : MonoBehaviour
     void Start()
     {
         pathToTake = new List<Node>();
-
+        canShoot = true;
         actionPoints = 310;
     }
 
@@ -71,10 +73,13 @@ public class EnemyAI : MonoBehaviour
         Collider2D[] objects = Physics2D.OverlapCircleAll(transform.position, searchRadius);//Searches for all colliders in a radius around this transform
         foreach(Collider2D ship in objects)
         {
-            if(ship.tag == "Ship" && actionPoints>31)//If the collider belongs to a ship, and this enemy has enough action points
+            if(Time.time >= shotTimer + 1.5f) { canShoot = true; }
+            if(ship.tag == "Ship" && actionPoints>31 && canShoot)//If the collider belongs to a ship, and this enemy has enough action points
             {
+                canShoot = false;
                 actionPoints -= 31;
-                FireWeapon(ship.transform.position);
+                FireWeapon(ship.transform.position);//Takes off the action points, and fires at location of player
+                shotTimer = Time.time;
             }
         }        
     }
@@ -97,6 +102,11 @@ public class EnemyAI : MonoBehaviour
         newObject.GetComponent<ShotScript>().speed = shotSpeed;
         newObject.GetComponent<ShotScript>().distance = shotRange;//Sets the properties of the shot, according to the ship firing
 
-        Invoke("EnableCollider", 0.5f);
+        Invoke("EnableCollider", 0.8f);
+    }
+
+    public void EnableCollider()
+    {
+        GetComponent<Collider2D>().enabled = true;//Turns the collider back on
     }
 }

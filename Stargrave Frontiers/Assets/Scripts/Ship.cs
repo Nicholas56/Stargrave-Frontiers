@@ -13,8 +13,7 @@ public class Ship : MonoBehaviour
     public GameObject shot;    
     public float shotSpeed;
 
-    //public Vector2 shipPosition;
-
+    public List<Part> parts;
 
     public Ship()
     {
@@ -26,5 +25,13 @@ public class Ship : MonoBehaviour
         shipName = name;
         actionPoints = points;
         weapon = shipWeapon;
+    }
+
+    public Ship(string name, int points, Weapon shipWeapon, List<Part> shipParts)
+    {
+        shipName = name;
+        actionPoints = points;
+        weapon = shipWeapon;
+        parts = shipParts;
     }
 }

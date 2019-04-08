@@ -10,6 +10,7 @@ public class ShotScript : MonoBehaviour
 
     public float distance;
     float travel;
+    public bool hasHit;
 
     public GameObject explosion;
     Rigidbody2D rigid;
@@ -18,24 +19,41 @@ public class ShotScript : MonoBehaviour
 	void Start ()
     {
         rigid = GetComponent<Rigidbody2D>();//Gets the rigidbody component from the object
+        hasHit = false;
 	}
 	
 	// Update is called once per frame
 	void Update ()
     {
-        rigid.AddForce(direction*speed, ForceMode2D.Force);//Adds force to the projectile in the direction given
-
-        travel = Vector2.Distance(start, transform.position);//Calculates how far the projectile has travelled
-        if(travel >=distance)
+        if (!hasHit)//Checks if the shot has hit anything
         {
-            Instantiate(explosion, transform);//When it has gone far enough, it self-destructs 
-            Destroy(gameObject);
+            rigid.AddForce(direction * speed, ForceMode2D.Force);//Adds force to the projectile in the direction given
+
+            travel = Vector2.Distance(start, transform.position);//Calculates how far the projectile has travelled
+            if (travel >= distance)
+            {
+                Instantiate(explosion, transform);//When it has gone far enough, it self-destructs 
+                Destroy(gameObject);
+            }
         }
 	}
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Instantiate(explosion, transform);//When it hits something, it detonates
+        if (!hasHit)
+        {
+            GetComponent<DealDamage>().DoCollide(collision);
+            hasHit = true;
+            GameObject newObject = Instantiate(explosion, transform);//When it hits something, it detonates
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;//Stops the parent shot from moving
+            newObject.transform.position = transform.position;//Aligns the explosion with the hit
+            newObject.transform.localScale *= 4;//Makes the explosion larger
+            Invoke("SelfDestruct", 0.2f);//Destroys the parent shot
+        }
+    }
+
+    void SelfDestruct()
+    {
         Destroy(gameObject);
     }
 }

@@ -79,7 +79,6 @@ public class ShipControl : Ship
             user.selectedShipName.text = shipName;
             user.actNum = (0);//Resets the UI to give the default settings
             user.ResetText();
-            Debug.Log("Ship Clicked");
         }
     }
 
@@ -100,8 +99,7 @@ public class ShipControl : Ship
 
             Vector2 accVect = ((Vector2)transform.position + new Vector2(accX, accY)); //Accuracy is affected and changes the vector
             Vector2 dir = (direction - accVect).normalized;//Returned the direction of the shot, normalized to a magnitude of 1.
-
-            GetComponent<Collider2D>().enabled = false;//Turns the collider off, while firing
+            if (GetComponent<Collider2D>()) { GetComponent<Collider2D>().enabled = false; }//Turns the collider off, while firing
             GameObject newObject = Instantiate(shot, transform.position, Quaternion.identity);
             if (!newObject.GetComponent<ShotScript>()) { newObject.AddComponent<ShotScript>(); }//If the prefab doesn't have the correct script, add it
 

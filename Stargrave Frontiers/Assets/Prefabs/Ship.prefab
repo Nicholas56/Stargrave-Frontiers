@@ -102,7 +102,7 @@ MonoBehaviour:
   shipName: 
   actionPoints: 310
   shot: {fileID: 1610601815590664, guid: d5264efada392404a9359b68c734da83, type: 2}
-  shotSpeed: 5
+  shotSpeed: 6
   isShipSelected: 0
   isShipMoving: 0
   shipId: 0

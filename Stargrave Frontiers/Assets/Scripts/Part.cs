@@ -5,12 +5,13 @@ using UnityEngine;
 public class Part {
 
     public string partName;
-    public int cost;
+    public int pCost;
+    public bool inUse;
 
-    public Part(string name, int pCost)
+    public Part(string name, int cost)
     {
         partName = name;
-        cost = pCost;
+        pCost = cost;
     }
 
 }

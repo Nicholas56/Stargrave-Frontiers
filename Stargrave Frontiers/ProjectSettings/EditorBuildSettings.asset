@@ -6,6 +6,39 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/GameOpening.unity
+    guid: ebd92cb4d575cfa40936cbb43395a8b0
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 6f281dc3cba2f4e4b8b71c5d10ce4cbd
+  - enabled: 1
+    path: Assets/Scenes/MainScene.unity
+    guid: 82de0c77152676945bcaff3f0d30e162
+  - enabled: 1
+    path: Assets/Scenes/SetMission.unity
+    guid: 6f040fb0df4342144a88d960a5a19e73
+  - enabled: 1
+    path: Assets/Scenes/SetOptions.unity
+    guid: b6d02bf9c152f4942b2d91c7021edaf5
+  - enabled: 1
+    path: Assets/Scenes/SetPersonnel.unity
+    guid: 0beb9ab399668cf4faea704468ccba5f
+  - enabled: 1
+    path: Assets/Scenes/SetQuit.unity
+    guid: 67f4655e8bcfe2e4d9546edb15e6f2da
+  - enabled: 1
+    path: Assets/Scenes/SetShips.unity
+    guid: 5f3549e6445d09546b48d9782611b91e
+  - enabled: 1
+    path: Assets/Scenes/SetShop.unity
+    guid: 152f03a146049a948bffcd6da45f5a98
+  - enabled: 1
+    path: Assets/Scenes/SetUpgrades.unity
+    guid: 48d1b2dc7d65d7a4e9a531230e6fced9
+  - enabled: 1
+    path: Assets/Scenes/SetupScene.unity
+    guid: a99dc43771753dd4cbd42c0ea121964d
+  - enabled: 1
+    path: Assets/Scenes/ScoreScene.unity
+    guid: 4dcbd0766df9d234cbd35a1d4110e297
   m_configObjects: {}

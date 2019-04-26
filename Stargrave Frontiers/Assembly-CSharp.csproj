@@ -61,28 +61,34 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Battle\DealDamage.cs" />
+    <Compile Include="Assets\Scripts\Battle\EnemyAI.cs" />
+    <Compile Include="Assets\Scripts\Battle\EnemyAIController.cs" />
+    <Compile Include="Assets\Scripts\Battle\MoveSelectShip.cs" />
+    <Compile Include="Assets\Scripts\Battle\ShipControl.cs" />
+    <Compile Include="Assets\Scripts\Battle\ShipStorage.cs" />
+    <Compile Include="Assets\Scripts\Battle\ShotScript.cs" />
+    <Compile Include="Assets\Scripts\Battle\TimedDestroy.cs" />
+    <Compile Include="Assets\Scripts\Battle\UIController.cs" />
+    <Compile Include="Assets\Scripts\Battle\Weapon.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Cursor.cs" />
-    <Compile Include="Assets\Scripts\DealDamage.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
-    <Compile Include="Assets\Scripts\EnemyAI.cs" />
-    <Compile Include="Assets\Scripts\EnemyAIController.cs" />
     <Compile Include="Assets\Scripts\MapGenerator.cs" />
     <Compile Include="Assets\Scripts\Movement\Grid.cs" />
     <Compile Include="Assets\Scripts\Movement\Node.cs" />
     <Compile Include="Assets\Scripts\Movement\Pathfinding.cs" />
-    <Compile Include="Assets\Scripts\MoveSelectShip.cs" />
     <Compile Include="Assets\Scripts\Part.cs" />
+    <Compile Include="Assets\Scripts\PlayerProfile.cs" />
     <Compile Include="Assets\Scripts\Profile.cs" />
+    <Compile Include="Assets\Scripts\Score.cs" />
+    <Compile Include="Assets\Scripts\Setup\ButtonScript.cs" />
+    <Compile Include="Assets\Scripts\Setup\DisplayUI.cs" />
+    <Compile Include="Assets\Scripts\Setup\MenuScript.cs" />
+    <Compile Include="Assets\Scripts\Setup\ShipSetupScript.cs" />
+    <Compile Include="Assets\Scripts\Setup\TitleScript.cs" />
     <Compile Include="Assets\Scripts\Ship.cs" />
-    <Compile Include="Assets\Scripts\ShipControl.cs" />
-    <Compile Include="Assets\Scripts\ShipStorage.cs" />
-    <Compile Include="Assets\Scripts\ShotScript.cs" />
     <Compile Include="Assets\Scripts\Tester.cs" />
-    <Compile Include="Assets\Scripts\TimedDestroy.cs" />
-    <Compile Include="Assets\Scripts\TitleScript.cs" />
-    <Compile Include="Assets\Scripts\UIController.cs" />
-    <Compile Include="Assets\Scripts\Weapon.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Nick/Desktop/Online/Stargrave-Frontiers/Stargrave Frontiers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

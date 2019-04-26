@@ -18,6 +18,7 @@ public class Grid : MonoBehaviour {
 
     private void Start()
     {
+        gridWorldSize = PlayerProfile.mapSize;
         nodeDiameter = nodeRadius * 2;//Double the radius to get diameter
         gridSizeX = Mathf.RoundToInt(gridWorldSize.x / nodeDiameter);//Divide the grids world co-ordinates by the diameter to get the size of the graph in array units.
         gridSizeY = Mathf.RoundToInt(gridWorldSize.y / nodeDiameter);//Divide the grids world co-ordinates by the diameter to get the size of the graph in array units.

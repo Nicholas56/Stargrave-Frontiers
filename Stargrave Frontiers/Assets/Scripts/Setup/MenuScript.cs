@@ -19,6 +19,7 @@ public class MenuScript : MonoBehaviour
 
     public void LoadNextScene(int sceneIndex)
     {
+        if(sceneIndex == 10) { PlayerProfile.PlayMusic(); }
         SceneManager.LoadScene(sceneIndex);//Loads the scene according to the index given
     }
 
@@ -29,6 +30,8 @@ public class MenuScript : MonoBehaviour
 
     public static void EndBattle()
     {
+        MapGenerator.isBattle = false;
+        
         SceneManager.LoadScene(11);
     }
 }

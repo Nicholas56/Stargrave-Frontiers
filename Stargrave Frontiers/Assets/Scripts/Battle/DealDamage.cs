@@ -14,6 +14,7 @@ public class DealDamage : MonoBehaviour {
             }
             else if (collision.gameObject.GetComponent<ShipControl>().ship.parts.Count == 0)
             {
+                PlayerProfile.RemoveShip(collision.GetComponent<ShipControl>().shipId);//When your ship is destroyed, removes it from the profile
                 Destroy(collision.gameObject, 0.5f);//If no parts, the explosion destroys the ship
             }
         }

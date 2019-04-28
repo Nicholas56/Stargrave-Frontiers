@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Asteroid.cs" />
     <Compile Include="Assets\Scripts\Battle\DealDamage.cs" />
     <Compile Include="Assets\Scripts\Battle\EnemyAI.cs" />
     <Compile Include="Assets\Scripts\Battle\EnemyAIController.cs" />
@@ -89,6 +90,9 @@
     <Compile Include="Assets\Scripts\Setup\TitleScript.cs" />
     <Compile Include="Assets\Scripts\Ship.cs" />
     <Compile Include="Assets\Scripts\Tester.cs" />
+    <None Include="Assets\Fonts\birdman\licence.txt" />
+    <None Include="Assets\Fonts\downlink\Font License.txt.txt" />
+    <None Include="Assets\Fonts\downlink\Font License.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/Nick/Desktop/Online/Stargrave-Frontiers/Stargrave Frontiers/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>

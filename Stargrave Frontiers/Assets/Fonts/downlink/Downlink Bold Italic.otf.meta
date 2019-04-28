@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: c593b9c04e58ea444b9ca593b2ec762c
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Downlink
+  fontNames:
+  - Downlink
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 286b24749fd37234ca1fd1cb82c447f4, type: 3}
+  - {fileID: 12800000, guid: 68fea3e6978acb24f875b01196525375, type: 3}
+  - {fileID: 12800000, guid: a9830be8cfa99d5459caa0f5f0fe807f, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

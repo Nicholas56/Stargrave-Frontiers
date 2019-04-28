@@ -17,11 +17,14 @@ public class ShipSetupScript : MonoBehaviour
     public Text partListTxt;
 
     private int weapIndex, partIndex;
-        
+
     // Start is called before the first frame update
     void Start()
     {
-        shipName.text = PlayerProfile.player.playerShips[index].shipName;
+        if (PlayerProfile.player.playerShips.Count > 0)
+        {
+            shipName.text = PlayerProfile.player.playerShips[index].shipName;
+        }
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class ShipSetupScript : MonoBehaviour
     {
         if (PlayerProfile.player.playerShips.Count > 0)
         {
-            shipNumberTxt.text = "Ship " + (index + 1);
+            shipNumberTxt.text = "Ship " + (index + 1) + ": \n" + PlayerProfile.player.playerShips[index].shipName;//Displays ship number and name
 
             PlayerProfile.player.playerShips[index].shipName = shipName.text;//Overwrite ship name with input field
 

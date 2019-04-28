@@ -45,7 +45,7 @@ public class ButtonScript : MonoBehaviour
                 {
                     PlayerProfile.money += 200;//If conditions for bonus are met, add the correct amount.
                 }
-                MenuScript.EndBattle();
+                MenuScript.EndBattle();//Calls the end battle function that loads the results scene
                 break;
             case TextType.none:
                 break;

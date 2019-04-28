@@ -18,6 +18,8 @@ public class EnemyAI : MonoBehaviour
     float shotTimer;
     bool canShoot;
 
+    GameObject exhaust;
+
     public float speed = 2;
     public float waypointProximity = 0.001f;
     public float searchRadius = 6;
@@ -31,6 +33,7 @@ public class EnemyAI : MonoBehaviour
         pathToTake = new List<Node>();
         canShoot = true;
         actionPoints = 310;
+        exhaust = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -67,6 +70,8 @@ public class EnemyAI : MonoBehaviour
         else { gameObject.layer = 8; }//If the ship is selected, it is no longer counted as a wall
 
         if (actionPoints == 0) { transform.position = previousPosition; }//If the ship is out of action points, the ship returns to the previous node
+
+        if (isShipMoving && exhaust) { exhaust.SetActive(true); } else { exhaust.SetActive(false); }//Shows the exhaust animation, when the ship is moving
     }
 
     public void SeekPlayer()

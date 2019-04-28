@@ -18,6 +18,8 @@ public class PlayerProfile : MonoBehaviour
     public static int enemyNumber;
     public static int obstacleNumber;
 
+    static AudioSource buildMusic;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,10 +41,12 @@ public class PlayerProfile : MonoBehaviour
 
         player = new Profile();//Creates the new profile for the player
         money = 1000;
+        buildMusic = GetComponent<AudioSource>();
         RandomBattle();//Pre-randomises the battle parameters
         player.enemyTypes.Add(gameEnemies[0]);
         player.enemyTypes.Add(gameEnemies[1]);//Adds the type of enemies to appear in game
         score = new Score();
+
     }
 
     static Ship MakeNewShip(int item)//Creates a new instance of the catalogue item
@@ -127,9 +131,23 @@ public class PlayerProfile : MonoBehaviour
         int xNum = Random.Range(20, 30);
         int yNum = Random.Range(20, 30);//Pick random coordinates for the map size
         if (xNum % 2 == 0) { xNum++; }
-        if (yNum % 2 == 0) { xNum++; }//Ensures that the numbers are odd numbers, for the cursor to work
+        if (yNum % 2 == 0) { yNum++; }//Ensures that the numbers are odd numbers, for the cursor to work
         mapSize = new Vector2(xNum, yNum);
-        enemyNumber = Random.Range(5, 20);
+        enemyNumber = Random.Range(5, 12);
         obstacleNumber = Random.Range(50, 120);//Random number of enemies and obstacles
+    }
+
+    public static void RemoveShip(int sIndex)
+    {
+        player.playerShips.RemoveAt(sIndex);
+    }
+
+    public static void PlayMusic()
+    {
+        buildMusic.Play();
+    }
+    public static void StopMusic()
+    {
+        buildMusic.Pause();
     }
 }

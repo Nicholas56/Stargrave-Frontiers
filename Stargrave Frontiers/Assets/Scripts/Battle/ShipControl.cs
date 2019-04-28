@@ -25,8 +25,7 @@ public class ShipControl : MonoBehaviour
 
     public bool selectedMouse;
 
-
-
+    GameObject exhaust;
     
     // Use this for initialization
     void Start ()
@@ -37,12 +36,13 @@ public class ShipControl : MonoBehaviour
         canMove = true;
 
         actionPoints = 310;
+        exhaust = transform.GetChild(0).gameObject;
     }
-	
-	// Update is called once per frame
-	void Update ()
+
+    // Update is called once per frame
+    void Update()
     {
-        if (pathToTake.Count != 0 && actionPoints>0 && canMove)
+        if (pathToTake.Count != 0 && actionPoints > 0 && canMove)
         {
             isShipMoving = true;
             float step = speed * Time.deltaTime;
@@ -64,6 +64,21 @@ public class ShipControl : MonoBehaviour
         if (actionPoints == 0) { transform.position = previousPosition; }//If the ship is out of action points, the ship returns to the previous node
 
         if (isShipSelected) { gameObject.layer = 0; } else { gameObject.layer = 8; }//If the ship is selected, it is no longer counted as a wall
+
+        if (isShipMoving && exhaust) { exhaust.SetActive(true); } else { exhaust.SetActive(false); }//Shows the exhaust animation, when the ship is moving
+
+        if (pathToTake.Count > 0)
+        {
+            Vector2 localVelocity = new Vector2(pathToTake[0].Position.x - transform.position.x, pathToTake[0].Position.y - transform.position.y);
+            if (localVelocity.x > 0 && localVelocity.y == 0)
+            { transform.eulerAngles = new Vector3(0, 0, -90); }
+            else if (localVelocity.x < 0 && localVelocity.y == 0)
+            { transform.eulerAngles = new Vector3(0, 0, 90); }
+            else if (localVelocity.x == 0 && localVelocity.y > 0)
+            { transform.eulerAngles = new Vector3(0, 0, 0); }
+            else if (localVelocity.x == 0 && localVelocity.y < 0)
+            { transform.eulerAngles = new Vector3(0, 0, 180); }
+        }
     }
 
     private void OnMouseDown()

@@ -73,7 +73,7 @@ public class DisplayUI : MonoBehaviour
                 }
                 if (PlayerProfile.player.partList.Count > 0)//Checks if the list exists and has more than one item
                 {
-                    currentText.text = PlayerProfile.player.partList[item].partName + " Sale: $" + PlayerProfile.player.partList[item].pCost / 2;
+                    currentText.text = PlayerProfile.player.partList[item].partName + "\n Sale: $" + PlayerProfile.player.partList[item].pCost / 2;
                 }
                 else { currentText.text = "No Parts"; }
                 break;
@@ -88,7 +88,7 @@ public class DisplayUI : MonoBehaviour
                 }
                 if (PlayerProfile.player.playerShips.Count > 0)
                 {
-                    currentText.text = PlayerProfile.player.playerShips[item].shipName + " Sale: $" + PlayerProfile.player.playerShips[item].sCost / 2;
+                    currentText.text = PlayerProfile.player.playerShips[item].shipName + "\n Sale: $" + PlayerProfile.player.playerShips[item].sCost / 2;
                 }
                 else { currentText.text = "No Ships"; }
                 break;
@@ -103,7 +103,7 @@ public class DisplayUI : MonoBehaviour
                 }
                 if (PlayerProfile.player.weaponList.Count > 0)
                 {
-                    currentText.text = PlayerProfile.player.weaponList[item].weaponName + " Sale: $" + PlayerProfile.player.weaponList[item].wCost / 2;
+                    currentText.text = PlayerProfile.player.weaponList[item].weaponName + "\n Sale: $" + PlayerProfile.player.weaponList[item].wCost / 2;
                 }
                 else { currentText.text = "No Weapons"; }
                 break;

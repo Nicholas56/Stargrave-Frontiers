@@ -14,6 +14,8 @@ public class MapGenerator : MonoBehaviour
     Grid grid;
     int gX;
     int gY;
+    AudioSource gameMusic;
+    public static bool isBattle;
 
     // Use this for initialization
     void Start()
@@ -22,12 +24,16 @@ public class MapGenerator : MonoBehaviour
         ships = FindObjectOfType<ShipStorage>();
         PlayerProfile.score.currentEarnings = 0;
         PlayerProfile.score.bonusNum = PlayerProfile.player.playerShips.Count;//Resets and keeps track of the score during the battle
+        gameMusic = GetComponent<AudioSource>();
+        isBattle = true;
+        PlayerProfile.StopMusic();//Handles the change in music
         Invoke("PlaceObstacles", 1);
     }
 
     void PlaceObstacles()
     {
         player = PlayerProfile.player;//Loads in the profile scenario
+        gameMusic.Play();
 
         gX = grid.grid.GetLength(0);//Gets number of nodes along the x axis
         gY = grid.grid.GetLength(1);// Gets number of nodes along the y axis

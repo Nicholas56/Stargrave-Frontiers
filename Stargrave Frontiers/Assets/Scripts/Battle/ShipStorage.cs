@@ -30,7 +30,6 @@ public class ShipStorage : MonoBehaviour
     {
         player = PlayerProfile.player;//Loads the tester as the profile for the player
         List<Ship> currentShips = player.playerShips;// copies the list of player ships
-        Debug.Log("Hello" + currentShips.Count);
         if (currentShips !=null)
         {
             for (int i = 0; i < currentShips.Count; i++)

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class UIController : MonoBehaviour
 {
     public Text selectedShipName;
-    public Text outOfActionPoints;
+    public GameObject outOfActionPoints;
 
     public Button actionButton;
     public Button endTurnButton;
@@ -25,7 +25,7 @@ public class UIController : MonoBehaviour
         actions.Add("Move");
         actions.Add("Fire");
 
-        outOfActionPoints.gameObject.SetActive(false);
+        outOfActionPoints.SetActive(false);
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,7 @@ public class UIController : MonoBehaviour
         if (selector.currentShip)
         {
             float actPoints = (float)selector.currentShip.GetComponent<ShipControl>().actionPoints;//Converts int to float for calculation
-            actionBar.fillAmount =  actPoints/ 1000;//Shows the action bar filled as a ratio of remaining action points
+            actionBar.fillAmount =  actPoints/ 310;//Shows the action bar filled as a ratio of remaining action points
         }
         else
         {
@@ -76,12 +76,12 @@ public class UIController : MonoBehaviour
 
     public void FlashNotification()
     {
-        outOfActionPoints.gameObject.SetActive(true);//Make the notification visible
+        outOfActionPoints.SetActive(true);//Make the notification visible
         Invoke("RemoveNotification", 0.5f);
     }
 
     public void RemoveNotification()
     {
-        outOfActionPoints.gameObject.SetActive(false);//Make the notification invisible
+        outOfActionPoints.SetActive(false);//Make the notification invisible
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//The player profile and all data relating to the current playthrough is kept here.
+//Every function that ineracts with the ships from the menus is here, such as buying, selling and randomising the map.
 public class PlayerProfile : MonoBehaviour
 {
     public static Profile player;

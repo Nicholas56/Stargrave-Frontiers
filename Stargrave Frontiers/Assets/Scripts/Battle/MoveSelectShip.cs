@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+//Nicholas Easterby - EAS12337350
+//This script handles the player turn interactions that involve deciding ship movement. The path between the selected ship and the mouse click Also deselecting.
 public class MoveSelectShip : MonoBehaviour {
 
     public bool isTurn;

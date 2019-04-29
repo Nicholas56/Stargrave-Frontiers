@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the overall enemy controller that decides what the enemy ships do as a group. This is where the AI is designed
+//This also handles what occurs during the enemy turn
 public class EnemyAIController : MonoBehaviour
 {
     GameObject currentEnemy;

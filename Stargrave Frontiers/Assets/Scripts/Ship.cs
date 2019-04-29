@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Defines a ship and its properties. Features constructors for ships with and without attached parts.
 public class Ship 
 {
     public string shipName;

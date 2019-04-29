@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Nicholas Easterby - EAS12337350
+//The main script for the Ships menu tab. This shown one ship and all its details
+//Also handles viewing parts and weapons, as well as attaching and removing them from ships.
 public class ShipSetupScript : MonoBehaviour
 {
     public Text shipNumberTxt;

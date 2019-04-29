@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This script takes the information from the nodes attached to the grid and calculates the otpimal, lowest cost part.
+//The script take two inputs, the Start Position and the Target Position.
+//This script was created using a turorial by Daniel on youtube - link:https://www.youtube.com/watch?v=AKKpPmxx07w  
 public class Pathfinding : MonoBehaviour {
 
     Grid grid;

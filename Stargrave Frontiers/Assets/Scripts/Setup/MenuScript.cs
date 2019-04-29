@@ -16,18 +16,15 @@ public class MenuScript : MonoBehaviour
         
         if (heldScene >1)//If there is a previous scene
         {
-            SceneManager.UnloadSceneAsync(heldScene);//Removes the previously added scene
+            DeLoadScene(heldScene);
         }
         heldScene = sceneNo;//Sets the current scene as the stored previous scene
     }
 
     public void RemoveScene()
     {
-        Scene allScene = SceneManager.GetSceneByBuildIndex(10);//
-        if (allScene != null)
-        {
-            SceneManager.UnloadSceneAsync(4);
-        }
+        SceneManager.UnloadSceneAsync(4);
+        heldScene = 0;
     }
 
     public void LoadNextScene(int sceneIndex)
@@ -46,5 +43,10 @@ public class MenuScript : MonoBehaviour
         MapGenerator.isBattle = false;
         
         SceneManager.LoadScene(11);
+    }
+
+    void DeLoadScene(int held)
+    {
+        SceneManager.UnloadSceneAsync(held);//Removes the previously added scene
     }
 }

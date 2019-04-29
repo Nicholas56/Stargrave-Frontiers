@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This script takes the data held about ships in the player profile and gets it ready to be used by the map generator. Also adds game objects to attach the data to.
 public class ShipStorage : MonoBehaviour
 {
     public Profile player;

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the script that randomly generates the map use for battle. It uses the grid to determine which space is occupied, and where to place every object, including ships.
+//Places ships for the first time and transfers their properties over to them, from the profile.
 public class MapGenerator : MonoBehaviour
 {
     Profile player;

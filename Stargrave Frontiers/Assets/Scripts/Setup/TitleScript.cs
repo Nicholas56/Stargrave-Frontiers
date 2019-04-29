@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-
+//Nicholas Easterby - EAS12337350
+//This script is for the opening scene to the game. This oscilates the color for the opening graphic
+//Also handles the player input that allows the player to proceed to the next scene, while the graphic fades to black.
 public class TitleScript : MonoBehaviour
 {
     float startTime;

@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the universal button script. Depending on the type of button, this script performs a different function.
+//The item variable allows the button to use the same function for different instances of an item
 public class ButtonScript : MonoBehaviour
 {
     public enum TextType { none, BuyShip, BuyWeapon, BuyPart, SellShip, SellWeapon, SellPart, previous, next, random, endBattle }

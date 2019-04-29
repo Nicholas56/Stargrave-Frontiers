@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Nicholas Easterby - EAS12337350
+// This is the universal text script. Depending on the type of text, the output is in the correct format. Pulling all the relevant data to complete the text output.
+//The item variable allows for multiple instances of the text. Also limits instances to those that exist.
 public class DisplayUI : MonoBehaviour
 {
     Text currentText;

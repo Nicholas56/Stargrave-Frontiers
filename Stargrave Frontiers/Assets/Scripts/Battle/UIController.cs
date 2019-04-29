@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Nicholas Easterby - EAS12337350
+//This script instructs the information shown during battle such as the currently selected ship, action selected and the state of the action bar.
+//This script also handles the end turn process for the player.
 public class UIController : MonoBehaviour
 {
     public Text selectedShipName;

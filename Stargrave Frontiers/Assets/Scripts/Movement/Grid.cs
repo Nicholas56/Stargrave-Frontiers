@@ -1,7 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This script creates and handles the grid for the battle.
+//This also utilizes the nodes and assigns them to their respective lists
+//This script was created using a turorial by Daniel on youtube - link:https://www.youtube.com/watch?v=AKKpPmxx07w  
 public class Grid : MonoBehaviour {
 
     public Transform StartPosition;//This is where the program will start the pathfinding from.

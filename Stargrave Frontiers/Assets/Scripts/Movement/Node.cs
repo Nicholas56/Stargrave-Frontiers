@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This defines the properties of a node as well as providing the constructor for new nodes
+//This script was created using a turorial by Daniel on youtube - link:https://www.youtube.com/watch?v=AKKpPmxx07w  
 public class Node
 {
     public int gridX; // X position in the Node Array

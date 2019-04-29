@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+//Nicholas Easterby - EAS12337350
+//This script handles the individual actions of each ship. This script is fed the path to follow to create movement
+//This script also controls ships selection and ship firing
 public class ShipControl : MonoBehaviour
 {
     public bool isShipSelected;

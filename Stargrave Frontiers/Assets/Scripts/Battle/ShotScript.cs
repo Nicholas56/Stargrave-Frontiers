@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This script handles the motion of the shot fired from the ship. This uses the data about the weapons to determine the properties of the shot.
+//This also instantiates the explosion animation.
 public class ShotScript : MonoBehaviour
 {
     public float speed;

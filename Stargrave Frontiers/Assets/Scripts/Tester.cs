@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//Test profile used to simulate battle without selecting ships before.
 public class Tester : MonoBehaviour
 {
     public Profile player;

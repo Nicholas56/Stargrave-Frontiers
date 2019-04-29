@@ -1,6 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//Nicholas Easterby - EAS12337350
+//This is the controller for an individual enemy vessel. This calculates the movement path, using the pathfinder script.
+//This also calculates where to fire, upon locating a player ship.
+//This script holds the enemy shot and the enemy exhaust gameobjects.
+//This script also handles the ships action points and their use
 
 public class EnemyAI : MonoBehaviour
 {
@@ -108,7 +113,7 @@ public class EnemyAI : MonoBehaviour
         newObject.GetComponent<ShotScript>().speed = shotSpeed;
         newObject.GetComponent<ShotScript>().distance = shotRange;//Sets the properties of the shot, according to the ship firing
 
-        Invoke("EnableCollider", 0.8f);
+        Invoke("EnableCollider", 2f);
     }
 
     public void EnableCollider()

@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the asteroid script that sets each instance of asteroid to spin the fog animation at random speeds
 public class Asteroid : MonoBehaviour
 {
     public Sprite altSprite;

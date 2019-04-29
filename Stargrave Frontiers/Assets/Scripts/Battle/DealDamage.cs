@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the Damage script that determines the effects of being shot by another ship
+//This calculates health and whether the ship is destroyed or not.
 public class DealDamage : MonoBehaviour {
 
     public void DoCollide(Collider2D collision)

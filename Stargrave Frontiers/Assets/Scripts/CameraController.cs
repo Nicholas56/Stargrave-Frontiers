@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the camera script. The script allows player input to direct where the camera points. This is a WASD and arrow key input. 
+//The camera also has a pan limit so that the player can't scroll off into the distance.
+//I used a tutorial by Brackeys on Youtube called 'How to make RTS Camera Movement in Unity' - link:https://www.youtube.com/watch?v=cfjLQrMGEb4
 public class CameraController : MonoBehaviour
 {
     public float panSpeed = 20f;

@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+//Nicholas Easterby - EAS12337350
+//This menu script handles every scene transition in  the game.
+//The add scene function allows one scene to be overlaid upon the previous scene. It also removes the previous overlaid scene
+//The ened battle function is called from within the battle
 public class MenuScript : MonoBehaviour
 {
     int heldScene;
@@ -20,7 +23,11 @@ public class MenuScript : MonoBehaviour
 
     public void RemoveScene()
     {
-        SceneManager.UnloadSceneAsync(4);
+        Scene allScene = SceneManager.GetSceneByBuildIndex(10);//
+        if (allScene != null)
+        {
+            SceneManager.UnloadSceneAsync(4);
+        }
     }
 
     public void LoadNextScene(int sceneIndex)

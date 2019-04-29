@@ -10,11 +10,17 @@ public class MenuScript : MonoBehaviour
     public void AddScene(int sceneNo)
     {
         SceneManager.LoadScene(sceneNo, LoadSceneMode.Additive);//Adds a sselected scene on top of current scene
+        
         if (heldScene >1)//If there is a previous scene
         {
             SceneManager.UnloadSceneAsync(heldScene);//Removes the previously added scene
         }
         heldScene = sceneNo;//Sets the current scene as the stored previous scene
+    }
+
+    public void RemoveScene()
+    {
+        SceneManager.UnloadSceneAsync(4);
     }
 
     public void LoadNextScene(int sceneIndex)

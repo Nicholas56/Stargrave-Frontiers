@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+//Nicholas Easterby - EAS12337350
+//This is the cursor script that attaches the game cursor to the grid. This works by getting the position of the pc cursor
 public class Cursor : MonoBehaviour
 {
     Grid grid;
